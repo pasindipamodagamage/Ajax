@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax Example</title>
+    <style>
+        table{
+            display: none;
+        }
+        th td{
+            background-color: lightcyan;
+            padding: 3px;
+        }
+        table,tr,td{
+            border :1px solid black
+        }
+    </style>
+</head>
+<body>
+<h1>This is a project for Ajax</h1>
+<p id="para">Click the button to load the content</p>
+<img id="image">
+<button id="btn">Load Contents</button>
+<br> <br>
+<!--<section>-->
+<!--    <h3 id="userId"></h3>-->
+<!--    <h3 id="id"></h3>-->
+<!--    <h3 id="title"></h3>-->
+<!--    <h3 id="body"></h3>-->
+<!--</section>-->
+
+<section>
+    <table >
+
+        <tr>
+            <td id="h-userId">User Id</td>
+            <td id="h-id">Id</td>
+            <td id="h-title">Title</td>
+            <td id="h-body">Body</td>
+        </tr>
+
+        <tr >
+            <td id="userId"></td>
+            <td id="id"></td>
+            <td id="title"></td>
+            <td id="body"></td>
+
+        </tr>
+    </table>
+</section>
+<!--load Jquery-->
+<script src="js/jquery-3.7.1.min.js"></script>
+
+<script>
+
+
+    $("#btn").click(function(){
+        $('table').show();
+        console.log("Request Start");
+        // $.ajax({
+        //     // async:false,
+        //     url:"db/db.txt",
+        //
+        //     // for sucess request shown
+        //     success:function (response){
+        //         console.log(response);
+        //     },
+        //
+        //     // for error showing
+        //     error:function (error){
+        //         console.log(error)
+        //     }
+        // })
+
+
+        $.ajax({
+            url:"https://jsonplaceholder.typicode.com/posts",
+            success:function (respons){
+                // show in console
+                console.log(respons.userId);
+                console.log(respons.id);
+                console.log(respons.title);
+                console.log(respons.body);
+
+                // show in web
+                for (let i = 0; i <= 100; i++) {
+                    $('#userId').text(
+                        respons[i].userId
+                    )
+
+                    $('#id').text(
+                        respons[i].id
+                    )
+
+                    $('#title').text(
+                        respons[i].title
+                    )
+
+                    $('#body').text(
+                        respons[i].body
+                    )
+
+                }
+
+                // $('#h-userId').innerText(
+                //     user-Id
+                // )
+                //
+                // $('#h-id').text(
+                //     id
+                // )
+                //
+                // $('#h-title').text(
+                //     title
+                // )
+                //
+                // $('#h-body').text(
+                //     body
+                // )
+            }
+        })
+        console.log("Request End");
+
+
+
+
+
+
+
+
+
+        //
+        // console.log("Button Clicked")
+        // console.log("Request started !");
+        // var http=new XMLHttpRequest();
+        // console.log(http.readyState,"After the XMLHttpRequest Object created ");
+        // http.send();
+
+    //     fix the open state issue
+    //     http.open('GET','index.html');
+    //     http.open('GET','db.txt'); http status code = 404 error
+
+        // for text -asynchronouns
+        // http.open('GET','db/db.txt');
+
+        // synchronuns
+        // http.open('GET','db/db.txt',false);
+
+        // console.log(http.readyState,"After the open method invoke");
+        // http.responseText
+        // console.log(http.readyState,"After the Response text printed ");
+
+        // console.log(http.responseText);
+        // http.send();
+        // console.log(http.readyState,"After the send method invoke ");
+
+        // for image
+        // http.open('GET','images/ERA.jpg')
+        // http.send();
+        //
+        // http.onreadystatechange=function () {
+        //    console.log("test");
+        //     console.log(http.readyState,"inside on ready state change event");
+        //     console.log(http.responseText);
+
+
+            // text ekak append krnw
+            // if(http.status==200&& http.readyState===4){
+            //     $("#para").text(http.responseText)
+                // $("#image").image('/image/ERA.jpg');
+            // }
+
+            //
+            //image ekak danna
+            // if(http.status==200&& http.readyState===4){
+            //     $('#image').attr('src','images/ERA.jpg').show()
+            // }
+
+            // console.log(http.readyState);
+            // console.log(http.status);
+            // console.log(http.responseText);
+
+            // var text=http.responseText;
+            // $("#para").append(text);
+
+
+        // }
+        // console.log(http.responseText);
+        // console.log("Request end !");
+
+
+
+    })
+</script>
+
+<!--<script >-->
+<!--    // synchronous-->
+<!--    // console.log(1);-->
+<!--    // console.log(2);-->
+<!--    // console.log(3);-->
+
+<!--    console.log("Start !");-->
+<!--    setTimeout(()=>{-->
+<!--        console.log("Middle-1");-->
+<!--    },2000)-->
+<!--    console.log("End");-->
+<!--    setTimeout(()=>{-->
+<!--        console.log("Middle-2");-->
+<!--    },1000)-->
+<!--</script>-->
+</body>
+</html>
